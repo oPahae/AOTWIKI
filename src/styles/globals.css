@@ -1,0 +1,172 @@
+@import "tailwindcss";
+
+button {
+  cursor: pointer;
+}
+
+html, body {
+  scrollbar-width: none;
+}
+
+.hero {
+  background: url('../../public/general/hero.jpg') fixed no-repeat;
+  background-position: center;
+}
+
+.hero2 {
+  background: url('../../public/general/hero2.webp') fixed no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.hero3 {
+  background: url('../../public/general/hero3.jpg') fixed no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.soundtrack {
+  background: url('../../public/general/soundtrack.jpg') no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.fullworld {
+  background: url('../../public/places/world.png') no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+/* === OST Range Inputs === */
+.ost-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(to right,
+      #dc2626 0%,
+      #dc2626 var(--range-progress, 0%),
+      rgba(255, 255, 255, 0.12) var(--range-progress, 0%),
+      rgba(255, 255, 255, 0.12) 100%);
+  outline: none;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease;
+}
+
+.ost-range:hover {
+  box-shadow: 0 0 12px rgba(220, 38, 38, 0.35);
+}
+
+/* Thumb - Webkit */
+.ost-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid #dc2626;
+  box-shadow: 0 0 8px rgba(220, 38, 38, 0.7);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  margin-top: 0;
+}
+
+.ost-range::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 14px rgba(220, 38, 38, 0.9);
+}
+
+.ost-range::-webkit-slider-thumb:active {
+  transform: scale(1.05);
+}
+
+/* Thumb - Firefox */
+.ost-range::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid #dc2626;
+  box-shadow: 0 0 8px rgba(220, 38, 38, 0.7);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.ost-range::-moz-range-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 14px rgba(220, 38, 38, 0.9);
+}
+
+/* Track - Firefox (background handled separately since Firefox doesn't support gradient trick the same way) */
+.ost-range::-moz-range-track {
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.ost-range::-moz-range-progress {
+  height: 6px;
+  border-radius: 999px;
+  background: #dc2626;
+}
+
+/* Variante volume (petit slider compact) */
+.ost-range--sm {
+  width: 90px;
+  height: 5px;
+}
+
+.ost-range--sm::-webkit-slider-thumb {
+  width: 12px;
+  height: 12px;
+  border-width: 2px;
+}
+
+.ost-range--sm::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-width: 2px;
+}
+
+/* Variante barre de lecture (seek) - un peu plus épaisse */
+.ost-range--seek {
+  height: 7px;
+}
+
+.ost-range--seek::-webkit-slider-thumb {
+  width: 16px;
+  height: 16px;
+}
+
+.ost-range--seek::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+}
+
+.font-gothic {
+  font-family: 'Cinzel Decorative', serif;
+}
+
+.font-metal {
+  font-family: 'Metal Mania', serif;
+}
+
+.torn-border {
+  border: 2px solid rgba(153, 27, 27, 0.55);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.6), 0 0 25px rgba(140, 10, 10, 0.25), inset 0 0 30px rgba(0, 0, 0, 0.6);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(153, 27, 27, 0.5);
+  border-radius: 999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
