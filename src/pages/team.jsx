@@ -9,10 +9,15 @@ import { AUTHOR, WIT_STUDIO_STAFF, VOICE_ACTORS } from "../constants/team";
 const fallbackAvatar = (name) =>
     `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=7f1d1d&color=f5f5f4&size=256&bold=true`;
 
-const slugify = (str) =>
+const slugifyChars = (str) =>
     (str || "")
         .split(" ")[0]
         .toLowerCase()
+
+const slugifyCharacters = (str) =>
+    (str || "")
+        .toLowerCase()
+        .replace(" ", "-")
 
 function SearchInput({ value, onChange, placeholder }) {
     return (
@@ -283,11 +288,11 @@ export default function Team() {
                                             </div>
                                             <div className="relative aspect-[3/4] overflow-hidden grayscale-[20%] group-hover:grayscale-0 transition-all duration-500 border-l border-red-900/40">
                                                 <img
-                                                    src={`/chars/${slugify(va.character)}.png`}
+                                                    src={`/chars/${slugifyChars(va.character)}.png`}
                                                     alt={va.character}
                                                     onError={(e) => {
                                                         e.currentTarget.onerror = null;
-                                                        e.currentTarget.src = fallbackAvatar(va.character);
+                                                        e.currentTarget.src = `/characters/${slugifyCharacters(va.character)}.png`;
                                                     }}
                                                     className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-all duration-700"
                                                 />
