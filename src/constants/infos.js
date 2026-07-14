@@ -13,7 +13,7 @@ export const TIMELINE = [
 ];
 
 export const GALLERY = [
-    "/galley/faces/10-1.png",
+    "/gallery/faces/10-1.png",
     "/gallery/faces/6-1.jpg",
     "/gallery/visuals/6.png",
     "/gallery/titans/10.png",
