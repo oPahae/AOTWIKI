@@ -13,10 +13,10 @@ export const TIMELINE = [
 ];
 
 export const GALLERY = [
-    "/gallery/eyes/Capture d’écran (72).png",
-    "/gallery/faces/Capture d’écran (281).png",
-    "/gallery/visuals/Capture d’écran (291).png",
-    "/gallery/titans/Capture d’écran (279).png",
+    "/galley/faces/10-1.png",
+    "/gallery/faces/6-1.jpg",
+    "/gallery/visuals/6.png",
+    "/gallery/titans/10.png",
 ];
 
 export const SOCIAL_LINKS = [
