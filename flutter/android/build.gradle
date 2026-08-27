@@ -1,0 +1,40 @@
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+// Same lint-vs-Kotlin classpath conflict as in app/build.gradle, but this
+// disables it across every plugin module too (audioplayers_android,
+// flutter_inappwebview_android, jni, etc.) — each one runs its own
+// lintVital*Release task as part of assembleRelease, and this build's
+// error log showed every one of them failing on the same
+// NoClassDefFoundError, not just the app module's.
+subprojects {
+    afterEvaluate { proj ->
+        if (proj.plugins.hasPlugin("com.android.application") || proj.plugins.hasPlugin("com.android.library")) {
+            def androidExt = proj.extensions.findByName("android")
+            if (androidExt != null && androidExt.hasProperty("lint")) {
+                androidExt.lint {
+                    checkReleaseBuilds = false
+                    abortOnError = false
+                }
+            }
+        }
+    }
+}
+
+def newBuildDir = "${rootProject.projectDir}/../build"
+rootProject.buildDir = newBuildDir
+
+subprojects {
+    project.buildDir = "${newBuildDir}/${project.name}"
+}
+subprojects {
+    project.evaluationDependsOn(":app")
+}
+
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
+}

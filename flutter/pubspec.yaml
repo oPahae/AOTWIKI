@@ -1,0 +1,59 @@
+name: aotwiki_flutter
+description: "AOT Wiki — conversion Flutter fidèle du site Next.js AOTWIKI."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+
+  # State management (single strategy, as required)
+  provider: ^6.1.2
+
+  # Audio playback for the OSTs page + homepage mini player
+  audioplayers: ^6.1.0
+
+  # YouTube embeds for the Songs page (openings/endings)
+  youtube_player_flutter: ^9.1.1
+
+  # Pinch-to-zoom / pan lightbox for Gallery & Eyecatch pages
+  photo_view: ^0.15.0
+
+  # Google Fonts (Nosifer, Cinzel Decorative, UnifrakturMaguntia, Metal
+  # Mania) — same gothic font stack as the Next.js site. Fetched/cached by
+  # the package at runtime on the user's device.
+  google_fonts: ^6.2.1
+
+  # Open external links (social links, YouTube fallback, etc.)
+  url_launcher: ^6.3.1
+
+  # Custom SVG-like painting is done with CustomPainter (no package needed)
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/chars/
+    - assets/images/characters/
+    - assets/images/logos/
+    - assets/images/walls/
+    - assets/images/places/
+    - assets/images/team/
+    - assets/images/songs/
+    - assets/images/eyecatch/
+    - assets/images/general/
+    - assets/images/gallery/bodyparts/
+    - assets/images/gallery/eyes/
+    - assets/images/gallery/faces/
+    - assets/images/gallery/titans/
+    - assets/images/gallery/visuals/
+    - assets/audio/osts/

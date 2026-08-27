@@ -1,0 +1,70 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file("local.properties")
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader("UTF-8") { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def flutterVersionCode = localProperties.getProperty("flutter.versionCode") ?: "1"
+def flutterVersionName = localProperties.getProperty("flutter.versionName") ?: "1.0.0"
+
+android {
+    namespace = "com.aotwiki.app"
+    compileSdk = 36
+    ndkVersion = flutter.ndkVersion
+
+    // The AGP 8.12 / Kotlin 2.2.20 combo has a known classpath conflict in
+    // its "lint vital" tooling (fails with NoClassDefFoundError on
+    // org.jetbrains.kotlin.config.* classes) that has nothing to do with
+    // this app's actual code — it can crash `lintVitalAnalyzeRelease` even
+    // on a project with zero lint issues. Lint isn't required to produce a
+    // working APK, so it's disabled for release builds here.
+    lint {
+        checkReleaseBuilds = false
+        abortOnError = false
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_17.toString()
+    }
+
+    sourceSets {
+        main.java.srcDirs += "src/main/kotlin"
+    }
+
+    defaultConfig {
+        // Bundle identifier for the AOT Wiki app.
+        applicationId "com.aotwiki.app"
+        minSdkVersion = flutter.minSdkVersion
+        targetSdk = 36
+        versionCode = flutterVersionCode.toInteger()
+        versionName = flutterVersionName
+    }
+
+    buildTypes {
+        release {
+            // Signed with the debug key so `flutter build apk --release`
+            // works out of the box. Replace with your own signing config
+            // before publishing to the Play Store.
+            signingConfig = signingConfigs.debug
+            minifyEnabled = false
+            shrinkResources = false
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}
