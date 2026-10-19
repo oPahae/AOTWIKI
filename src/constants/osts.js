@@ -215,6 +215,14 @@ export const OSTS = [
         bestParts: ["00:32", "01:39"],
         rating: 9.4,
     },
+    {
+        name: "進撃st-hrn-gt-pf20130629巨人",
+        artist: "Hiroyuki Sawano",
+        time: "04:36",
+        url: "/osts/進撃st-hrn-gt-pf20130629巨人.mp3",
+        bestParts: ["01:23", "01:56"],
+        rating: 9.6,
+    },
 ];
 
 export const OSTS_LANDING = OSTS.sort((a, b) => b.rating - a.rating).slice(0, 3)
